@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "./Weather.css";
 
-const api = {
-  key: "040da592c3c44a82b39797070e76eee6",
-  base: "https://api.openweathermap.org/data/2.5/",
-};
+const url="https://api.openweathermap.org/data/2.5/"
+const key= "040da592c3c44a82b39797070e76eee6"
 const Weather = () => {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState({});
 
   const search = (evt) => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${city}&units=metric&appid=${api.key}`)
+      fetch(`${url}weather?q=${city}&units=metric&appid=${env.WEATHER_KEY}`)
         .then((res) => res.json())
         .then((data) => {
           setWeather(data);
